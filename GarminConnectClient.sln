@@ -1,0 +1,61 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GarminConnectClient", "GarminConnectClient\GarminConnectClient.csproj", "{1F97ED75-8F5A-40E5-9D1A-EFA78558A84A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GarminConnectClient.Test", "GarminConnectClient.Test\GarminConnectClient.Test.csproj", "{89C13626-5FF9-413A-83E7-943C89056DFF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GarminConnectClient.Demo", "GarminConnectClient.Demo\GarminConnectClient.Demo.csproj", "{7F61EC1C-16FE-4A0B-94D4-A570CFC5AD04}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{38F438D7-287E-4A65-99D8-69D59637F577}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\NuGet.Config = .nuget\NuGet.Config
+		.nuget\NuGet.exe = .nuget\NuGet.exe
+		.nuget\NuGet.targets = .nuget\NuGet.targets
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|Mixed Platforms = Debug|Mixed Platforms
+		Debug|x86 = Debug|x86
+		Release|Any CPU = Release|Any CPU
+		Release|Mixed Platforms = Release|Mixed Platforms
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1F97ED75-8F5A-40E5-9D1A-EFA78558A84A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1F97ED75-8F5A-40E5-9D1A-EFA78558A84A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1F97ED75-8F5A-40E5-9D1A-EFA78558A84A}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{1F97ED75-8F5A-40E5-9D1A-EFA78558A84A}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{1F97ED75-8F5A-40E5-9D1A-EFA78558A84A}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{1F97ED75-8F5A-40E5-9D1A-EFA78558A84A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1F97ED75-8F5A-40E5-9D1A-EFA78558A84A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1F97ED75-8F5A-40E5-9D1A-EFA78558A84A}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{1F97ED75-8F5A-40E5-9D1A-EFA78558A84A}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{1F97ED75-8F5A-40E5-9D1A-EFA78558A84A}.Release|x86.ActiveCfg = Release|Any CPU
+		{89C13626-5FF9-413A-83E7-943C89056DFF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{89C13626-5FF9-413A-83E7-943C89056DFF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{89C13626-5FF9-413A-83E7-943C89056DFF}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{89C13626-5FF9-413A-83E7-943C89056DFF}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{89C13626-5FF9-413A-83E7-943C89056DFF}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{89C13626-5FF9-413A-83E7-943C89056DFF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{89C13626-5FF9-413A-83E7-943C89056DFF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{89C13626-5FF9-413A-83E7-943C89056DFF}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{89C13626-5FF9-413A-83E7-943C89056DFF}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{89C13626-5FF9-413A-83E7-943C89056DFF}.Release|x86.ActiveCfg = Release|Any CPU
+		{7F61EC1C-16FE-4A0B-94D4-A570CFC5AD04}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{7F61EC1C-16FE-4A0B-94D4-A570CFC5AD04}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
+		{7F61EC1C-16FE-4A0B-94D4-A570CFC5AD04}.Debug|Mixed Platforms.Build.0 = Debug|x86
+		{7F61EC1C-16FE-4A0B-94D4-A570CFC5AD04}.Debug|x86.ActiveCfg = Debug|x86
+		{7F61EC1C-16FE-4A0B-94D4-A570CFC5AD04}.Debug|x86.Build.0 = Debug|x86
+		{7F61EC1C-16FE-4A0B-94D4-A570CFC5AD04}.Release|Any CPU.ActiveCfg = Release|x86
+		{7F61EC1C-16FE-4A0B-94D4-A570CFC5AD04}.Release|Mixed Platforms.ActiveCfg = Release|x86
+		{7F61EC1C-16FE-4A0B-94D4-A570CFC5AD04}.Release|Mixed Platforms.Build.0 = Release|x86
+		{7F61EC1C-16FE-4A0B-94D4-A570CFC5AD04}.Release|x86.ActiveCfg = Release|x86
+		{7F61EC1C-16FE-4A0B-94D4-A570CFC5AD04}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
