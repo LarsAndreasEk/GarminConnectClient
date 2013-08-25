@@ -8,7 +8,7 @@ namespace SuperRembo.GarminConnectClient.Demo
 		private static void Main(string[] args)
 		{
 			var options = new Options();
-			if (CommandLineParser.Default.ParseArguments(args, options))
+			if (Parser.Default.ParseArguments(args, options))
 			{
 				switch (options.Action)
 				{
@@ -46,7 +46,8 @@ namespace SuperRembo.GarminConnectClient.Demo
 		private static void ReadLineIfDebug()
 		{
 #if (DEBUG)
-			Console.ReadLine();
+			if (System.Diagnostics.Debugger.IsAttached)
+				Console.ReadLine();
 #endif
 		}
 
