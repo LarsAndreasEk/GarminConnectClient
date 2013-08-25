@@ -9,6 +9,6 @@
     <licenseUrl>https://github.com/SuperRembo/GarminConnectClient/blob/master/LICENSE.md</licenseUrl>
     <projectUrl>https://github.com/SuperRembo/GarminConnectClient</projectUrl>
     <description>$description$</description>
-    <tags>Garmin GarminConnect client tcx kml gps</tags>
+    <tags>Garmin GarminConnect client TCX KML GPX</tags>
   </metadata>
 </package>

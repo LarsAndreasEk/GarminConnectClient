@@ -1,6 +1,6 @@
 ﻿using System.Runtime.Serialization;
 
-namespace SuperRembo.GarminConnectClient.Data
+namespace GarminConnectClient.Data
 {
 	/// <example>
 	/// "SumDistance": {

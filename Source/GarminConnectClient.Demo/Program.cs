@@ -1,7 +1,7 @@
 ﻿using System;
 using CommandLine;
 
-namespace SuperRembo.GarminConnectClient.Demo
+namespace GarminConnectClient.Demo
 {
 	internal class Program
 	{

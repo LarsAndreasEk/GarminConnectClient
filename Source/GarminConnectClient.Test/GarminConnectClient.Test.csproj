@@ -8,8 +8,8 @@
     <ProjectGuid>{89C13626-5FF9-413A-83E7-943C89056DFF}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>SuperRembo.GarminConnectClient.Test</RootNamespace>
-    <AssemblyName>SuperRembo.GarminConnectClient.Test</AssemblyName>
+    <RootNamespace>GarminConnectClient.Test</RootNamespace>
+    <AssemblyName>GarminConnectClient.Test</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>

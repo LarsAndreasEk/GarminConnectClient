@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using SuperRembo.GarminConnectClient.Data;
+using GarminConnectClient.Data;
 
-namespace SuperRembo.GarminConnectClient.Demo
+namespace GarminConnectClient.Demo
 {
 	class DemoAction : ActionBase
 	{

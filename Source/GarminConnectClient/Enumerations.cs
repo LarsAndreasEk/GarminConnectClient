@@ -1,4 +1,4 @@
-﻿namespace SuperRembo.GarminConnectClient
+﻿namespace GarminConnectClient
 {
 	public enum ExportFileType
 	{

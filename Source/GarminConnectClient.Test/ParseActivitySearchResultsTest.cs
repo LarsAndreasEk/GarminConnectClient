@@ -1,8 +1,8 @@
 ﻿using System.Linq;
 using NUnit.Framework;
-using SuperRembo.GarminConnectClient.Data;
+using GarminConnectClient.Data;
 
-namespace SuperRembo.GarminConnectClient.Test
+namespace GarminConnectClient.Test
 {
 	[TestFixture]
 	class ParseActivitySearchResultsTest
@@ -52,7 +52,7 @@ namespace SuperRembo.GarminConnectClient.Test
 		private string GetActivitySearchResultsJson()
 		{
 			var resourceHelper = new EmbeddedResourceHelper(GetType().Assembly);
-			return resourceHelper.GetResourceAsString("SuperRembo.GarminConnectClient.Test.Data.ActivitiesSample1.json.txt");
+			return resourceHelper.GetResourceAsString("GarminConnectClient.Test.Data.ActivitiesSample1.json.txt");
 		}
 	}
 }

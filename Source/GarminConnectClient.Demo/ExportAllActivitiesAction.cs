@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using SuperRembo.GarminConnectClient.Data;
+using GarminConnectClient.Data;
 
-namespace SuperRembo.GarminConnectClient.Demo
+namespace GarminConnectClient.Demo
 {
 	class ExportAllActivitiesAction : ActionBase
 	{

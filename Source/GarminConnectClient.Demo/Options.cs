@@ -2,7 +2,7 @@
 using CommandLine;
 using CommandLine.Text;
 
-namespace SuperRembo.GarminConnectClient.Demo
+namespace GarminConnectClient.Demo
 {
 	sealed class Options
 	{

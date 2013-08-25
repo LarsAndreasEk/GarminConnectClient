@@ -8,8 +8,8 @@
     <ProjectGuid>{7F61EC1C-16FE-4A0B-94D4-A570CFC5AD04}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>SuperRembo.GarminConnectClient.Demo</RootNamespace>
-    <AssemblyName>Demo</AssemblyName>
+    <RootNamespace>GarminConnectClient.Demo</RootNamespace>
+    <AssemblyName>GarminConnectClient.Demo</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <TargetFrameworkProfile>
     </TargetFrameworkProfile>

@@ -1,6 +1,6 @@
 ﻿using System.Net;
 
-namespace SuperRembo.GarminConnectClient
+namespace GarminConnectClient
 {
 	public class Session
 	{

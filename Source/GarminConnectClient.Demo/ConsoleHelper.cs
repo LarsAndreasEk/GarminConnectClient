@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace SuperRembo.GarminConnectClient.Demo
+namespace GarminConnectClient.Demo
 {
 	static class ConsoleHelper
 	{

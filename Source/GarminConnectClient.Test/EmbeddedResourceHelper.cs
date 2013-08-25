@@ -2,7 +2,7 @@
 using System.IO;
 using System.Reflection;
 
-namespace SuperRembo.GarminConnectClient.Test
+namespace GarminConnectClient.Test
 {
 	public class EmbeddedResourceHelper
 	{

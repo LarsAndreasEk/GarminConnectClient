@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Net;
-using SuperRembo.GarminConnectClient.Data;
+using GarminConnectClient.Data;
 
-namespace SuperRembo.GarminConnectClient
+namespace GarminConnectClient
 {
 	public class ActivitySearchService
 	{

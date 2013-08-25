@@ -3,7 +3,7 @@ using System.Diagnostics;
 using System.Net;
 using System.Text;
 
-namespace SuperRembo.GarminConnectClient
+namespace GarminConnectClient
 {
 	public class SessionService
 	{

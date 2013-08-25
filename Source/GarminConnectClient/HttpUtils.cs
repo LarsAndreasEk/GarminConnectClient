@@ -5,7 +5,7 @@ using System.Net;
 using System.Text;
 using System.Web;
 
-namespace SuperRembo.GarminConnectClient
+namespace GarminConnectClient
 {
 	static class HttpUtils
 	{

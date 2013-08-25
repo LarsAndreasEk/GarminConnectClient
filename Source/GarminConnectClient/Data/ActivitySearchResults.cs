@@ -2,7 +2,7 @@
 using System.Runtime.Serialization;
 using Newtonsoft.Json;
 
-namespace SuperRembo.GarminConnectClient.Data
+namespace GarminConnectClient.Data
 {
 	[DataContract]
 	public class ActivitySearchResultsContainer
