@@ -1,5 +1,4 @@
-﻿using System;
-using CommandLine;
+﻿using CommandLine;
 using CommandLine.Text;
 
 namespace GarminConnectClient.Demo
@@ -22,7 +21,7 @@ namespace GarminConnectClient.Demo
 		public string GetUsage()
 		{
 			return HelpText.AutoBuild(this,
-				(HelpText current) => HelpText.DefaultParsingErrorsHandler(this, current));
+				current => HelpText.DefaultParsingErrorsHandler(this, current));
 		}
 
 		public enum ProgramAction

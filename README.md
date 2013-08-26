@@ -1,8 +1,11 @@
-﻿Garmin Connect Client for .NET
+Garmin Connect Client for .NET
 ==============================
 
-This is a basic client for Garmin Connect that supports searching for activities and exporting 
-activities to TCX, KML and GPX.
+This is a basic client for Garmin Connect that supports searching for activities and exporting activities to TCX, KML and GPX.
+
+Installation
+------------
+Just build it from source or install the [NuGet package](https://www.nuget.org/packages/GarminConnectClient/).
 
 API documentation provided by Garmin
 ------------------------------------
