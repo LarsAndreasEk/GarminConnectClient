@@ -62,25 +62,6 @@ namespace GarminConnectClient
 			var qs = HttpUtils.CreateQueryString();
 			qs.Add("service", "http://connect.garmin.com/post-auth/login");
 			qs.Add("clientId", ClientId);
-			//qs.Add("webhost", "olaxpw-connect02.garmin.com");
-			//qs.Add("source", "http://connect.garmin.com/en-US/signin");
-			//qs.Add("redirectAfterAccountLoginUrl", "http://connect.garmin.com/post-auth/login");
-			//qs.Add("redirectAfterAccountCreationUrl", "http://connect.garmin.com/post-auth/login");
-			//qs.Add("gauthHost", "https://sso.garmin.com/sso");
-			//qs.Add("locale", "en_US");
-			//qs.Add("id", "gauth-widget");
-			//qs.Add("cssUrl", "https://static.garmincdn.com/com.garmin.connect/ui/src-css/gauth-custom.css");
-			//qs.Add("clientId", "GarminConnect");
-			//qs.Add("rememberMeShown", "true");
-			//qs.Add("rememberMeChecked", "false");
-			//qs.Add("createAccountShown", "true");
-			//qs.Add("openCreateAccount", "false");
-			//qs.Add("usernameShown", "true");
-			//qs.Add("displayNameShown", "false");
-			//qs.Add("consumeServiceTicket", "false");
-			//qs.Add("initialFocus", "true");
-			//qs.Add("embedWidget", "false");
-
 			return "https://sso.garmin.com/sso/login?" + qs;
 		}
 
@@ -92,8 +73,6 @@ namespace GarminConnectClient
 			data.Add("embed", "true");
 			data.Add("lt", key);
 			data.Add("_eventId", "submit");
-			//data.Add("displayNameRequired", "false");
-			//data.Add("rememberme", "on");
 			return data;
 		}
 
