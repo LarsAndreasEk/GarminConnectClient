@@ -41,6 +41,13 @@ namespace GarminConnectClient
 			return request;
 		}
 
+		public static void WriteFormData(this HttpWebRequest request, NameValueCollection data)
+		{
+			request.Method = "POST";
+			request.ContentType = "application/x-www-form-urlencoded";
+			WriteBinary(request, Encoding.UTF8.GetBytes(data.ToString()));
+		}
+
 		public static void WriteBinary(this HttpWebRequest request, byte[] data)
 		{
 			if (request == null) throw new ArgumentNullException("request");

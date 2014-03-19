@@ -1,14 +1,14 @@
 ﻿using System;
+using System.Collections.Specialized;
 using System.Diagnostics;
 using System.Net;
-using System.Text;
+using System.Text.RegularExpressions;
 
 namespace GarminConnectClient
 {
 	public class SessionService
 	{
-		private const string SignInUrl = @"https://connect.garmin.com/signin";
-		private const string DashboardUrl = @"http://connect.garmin.com/dashboard";
+		private const string ClientId = "SuperRembo-GarminConnectClient";
 
 		public Session Session { get; private set; }
 
@@ -17,12 +17,11 @@ namespace GarminConnectClient
 			try
 			{
 				Session = new Session();
-				GetSignInPage(Session.Cookies);
 
-				var signInResponse = PostSignInRequest(Session.Cookies, userName, password);
-
-				if (IsDashboardUri(signInResponse.ResponseUri))
-					return true;
+				var key = GetFlowExecutionKey();
+				var signInResponse = PostLogInRequest(userName, password, key);
+				var ticketUrl = GetServiceTicketUrl(signInResponse);
+				return ProcessTicket(ticketUrl);
 			}
 			catch (Exception ex)
 			{
@@ -32,51 +31,109 @@ namespace GarminConnectClient
 			return false;
 		}
 
-		public void SignOut()
+		private string GetFlowExecutionKey()
 		{
-			var request = HttpUtils.CreateRequest(BuildSignOutUrl(), Session.Cookies);
-			request.GetResponse();
+			var request = HttpUtils.CreateRequest(GetLogInUrl(), Session.Cookies);
+			var response = (HttpWebResponse)request.GetResponse();
+			var content = response.GetResponseAsString();
+			return ParseFlowExecutionKey(content);
 		}
 
-		private static string BuildSignOutUrl()
+		private static string ParseFlowExecutionKey(string content)
 		{
-			var queryString = HttpUtils.CreateQueryString();
-			queryString.Add("actionMethod", "page/home/dashboard.xhtml:identity.logout");
-			queryString.Add("cid", "");
-			return String.Format("{0}?{1}", DashboardUrl, queryString);
+			// <!-- flowExecutionKey: [XXXX] -->
+			var re = new Regex(@"\bflowExecutionKey:\s*\[(?<key>[^]]*)\]");
+			var m = re.Match(content);
+			if (!m.Success)
+				throw new Exception("FlowExecutionKey not found.");
+
+			return m.Groups["key"].Value;
 		}
 
-		private static void GetSignInPage(CookieContainer cookies)
+		private HttpWebResponse PostLogInRequest(string userName, string password, string key)
 		{
-			var request = HttpUtils.CreateRequest(DashboardUrl, cookies);
-			request.GetResponse();
-		}
-
-		private static HttpWebResponse PostSignInRequest(CookieContainer cookies, string userName, string password)
-		{
-			var formBinaryData = BuildSignInFormData(userName, password);
-
-			var request = HttpUtils.CreateRequest(SignInUrl, cookies);
-			request.Method = "POST";
-			request.ContentType = "application/x-www-form-urlencoded";
-			request.WriteBinary(formBinaryData);
+			var request = HttpUtils.CreateRequest(GetLogInUrl(), Session.Cookies);
+			request.WriteFormData(BuildLogInFormData(userName, password, key));
 			return (HttpWebResponse)request.GetResponse();
 		}
 
-		private static byte[] BuildSignInFormData(string userName, string password)
+		private static string GetLogInUrl()
 		{
-			var formParams = HttpUtils.CreateQueryString();
-			formParams.Add("login", "login");
-			formParams.Add("login:loginUsernameField", userName);
-			formParams.Add("login:password", password);
-			formParams.Add("login:signInButton", "Sign In");
-			formParams.Add("javax.faces.ViewState", "j_id1");
-			return Encoding.UTF8.GetBytes(formParams.ToString());
+			var qs = HttpUtils.CreateQueryString();
+			qs.Add("service", "http://connect.garmin.com/post-auth/login");
+			qs.Add("clientId", ClientId);
+			//qs.Add("webhost", "olaxpw-connect02.garmin.com");
+			//qs.Add("source", "http://connect.garmin.com/en-US/signin");
+			//qs.Add("redirectAfterAccountLoginUrl", "http://connect.garmin.com/post-auth/login");
+			//qs.Add("redirectAfterAccountCreationUrl", "http://connect.garmin.com/post-auth/login");
+			//qs.Add("gauthHost", "https://sso.garmin.com/sso");
+			//qs.Add("locale", "en_US");
+			//qs.Add("id", "gauth-widget");
+			//qs.Add("cssUrl", "https://static.garmincdn.com/com.garmin.connect/ui/src-css/gauth-custom.css");
+			//qs.Add("clientId", "GarminConnect");
+			//qs.Add("rememberMeShown", "true");
+			//qs.Add("rememberMeChecked", "false");
+			//qs.Add("createAccountShown", "true");
+			//qs.Add("openCreateAccount", "false");
+			//qs.Add("usernameShown", "true");
+			//qs.Add("displayNameShown", "false");
+			//qs.Add("consumeServiceTicket", "false");
+			//qs.Add("initialFocus", "true");
+			//qs.Add("embedWidget", "false");
+
+			return "https://sso.garmin.com/sso/login?" + qs;
+		}
+
+		private static NameValueCollection BuildLogInFormData(string userName, string password, string key)
+		{
+			var data = HttpUtils.CreateQueryString();
+			data.Add("username", userName);
+			data.Add("password", password);
+			data.Add("embed", "true");
+			data.Add("lt", key);
+			data.Add("_eventId", "submit");
+			//data.Add("displayNameRequired", "false");
+			//data.Add("rememberme", "on");
+			return data;
+		}
+
+		private bool ProcessTicket(string ticketUrl)
+		{
+			var request = HttpUtils.CreateRequest(ticketUrl, Session.Cookies);
+			var response = (HttpWebResponse)request.GetResponse();
+			if (response.StatusCode != HttpStatusCode.OK)
+				throw new Exception("Invalid ticket URL.");
+
+			return IsDashboardUri(response.ResponseUri);
 		}
 
 		private static bool IsDashboardUri(Uri uri)
 		{
-			return uri.ToString().StartsWith(DashboardUrl);
+			return uri.Host == "connect.garmin.com"
+				&& uri.LocalPath == "/dashboard";
+		}
+
+		private string GetServiceTicketUrl(HttpWebResponse signInResponse)
+		{
+			var content = signInResponse.GetResponseAsString();
+			return ParseServiceTicketUrl(content);
+		}
+
+		private static string ParseServiceTicketUrl(string content)
+		{
+			// var response_url                 = 'http://connect.garmin.com/post-auth/login?ticket=ST-XXXXXX-XXXXXXXXXXXXXXXXXXXX-cas';
+			var re = new Regex(@"response_url\s*=\s*'(?<url>[^']*)'");
+			var m = re.Match(content);
+			if (!m.Success)
+				throw new Exception("Servcie ticket URL not found.");
+
+			return m.Groups["url"].Value;
+		}
+
+		public void SignOut()
+		{
+			var request = HttpUtils.CreateRequest("https://sso.garmin.com/sso/logout?service=http%3A%2F%2Fconnect.garmin.com%2F", Session.Cookies);
+			request.GetResponse();
 		}
 	}
 }
